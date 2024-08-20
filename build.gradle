@@ -1,0 +1,51 @@
+plugins {
+    id 'java-library'
+}
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+}
+group = 'org.eu.hanana.reimu.hnn.neoloader'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '18'
+targetCompatibility = '18'
+repositories {
+    maven {
+        url 'https://maven.aliyun.com/repository/public/'
+    }
+    mavenCentral()
+    maven {
+        url "https://maven.fabricmc.net/"
+    }
+}
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation group: 'org.jetbrains', name: 'intellij-fernflower', version: '1.2.1.16'
+    implementation group: 'net.fabricmc', name: 'fabric-loader', version: '0.13.3'
+    compileOnly(files("D:\\proj\\hanana_app\\build\\libs\\hanana_app-1.0-SNAPSHOT-all.jar"))
+
+//mixin requirements:
+    implementation("net.fabricmc:sponge-mixin:0.14.0+mixin.0.8.6") {
+        exclude module: 'launchwrapper'
+        exclude module: 'guava'
+    }
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation group: 'com.google.guava', name: 'guava', version: '33.2.1-jre'
+    implementation group: 'org.ow2.asm', name: 'asm', version: asmVersion
+    implementation group: 'org.ow2.asm', name: 'asm-analysis', version: asmVersion
+    implementation group: 'org.ow2.asm', name: 'asm-commons', version: asmVersion
+    implementation group: 'org.ow2.asm', name: 'asm-tree', version: asmVersion
+    implementation group: 'org.ow2.asm', name: 'asm-util', version: asmVersion
+
+    implementation 'net.fabricmc:tiny-mappings-parser:0.3.0+build.17'
+    implementation 'net.fabricmc:tiny-remapper:0.8.2'
+    implementation 'net.fabricmc:access-widener:2.1.0'
+
+    implementation 'org.ow2.sat4j:org.ow2.sat4j.core:2.3.6'
+    implementation 'org.ow2.sat4j:org.ow2.sat4j.pb:2.3.6'
+}
+
+test {
+    useJUnitPlatform()
+}

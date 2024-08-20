@@ -1,0 +1,68 @@
+[21:23:56] [INFO] [FabricLoader/GameProvider]: Loading hanana 1.0.0 with Fabric Loader 0.13.0
+[21:23:56] [INFO] [FabricLoader/]: Loading 2 mods:
+	- fabricloader 0.13.0
+	- java 18
+[21:23:56] [INFO] [FabricLoader/Mixin]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=file:/C:/Users/a/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.11.4+mixin.0.8.5/c1dc27696aa4006e492c2485c9ccbcb26045a971/sponge-mixin-0.11.4+mixin.0.8.5.jar Service=Knot/Fabric Env=CLIENT
+[21:27:32] [INFO] [FabricLoader/GameProvider]: Loading hanana 1.0.0 with Fabric Loader 0.13.3
+[21:27:32] [INFO] [FabricLoader/]: Loading 2 mods:
+	- fabricloader 0.13.3
+	- java 18
+[21:27:32] [INFO] [FabricLoader/Mixin]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=file:/C:/Users/a/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.11.4+mixin.0.8.5/c1dc27696aa4006e492c2485c9ccbcb26045a971/sponge-mixin-0.11.4+mixin.0.8.5.jar Service=Knot/Fabric Env=CLIENT
+[21:30:09] [INFO] [FabricLoader/GameProvider]: Loading hanana 1.0.0 with Fabric Loader 0.13.3
+[21:30:09] [INFO] [FabricLoader/]: Loading 2 mods:
+	- fabricloader 0.13.3
+	- java 18
+[21:30:09] [INFO] [FabricLoader/Mixin]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=file:/C:/Users/a/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.11.4+mixin.0.8.5/c1dc27696aa4006e492c2485c9ccbcb26045a971/sponge-mixin-0.11.4+mixin.0.8.5.jar Service=Knot/Fabric Env=CLIENT
+[21:30:15] [ERROR] [FabricLoader/]: The game has crashed!
+net.fabricmc.loader.impl.FormattedException: java.lang.UnsatisfiedLinkError: no chrome_elf in java.library.path: D:\Program Files\Java\jdk-18.0.1.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\Program Files\cuda\bin;D:\Program Files\cuda\libnvvp;;;C:\Program Files\Common Files\Oracle\Java\javapath;D:\Program Files (x86)\VMware\VMware Workstation\bin\;D:\Program Files\Java\jdk1.8.0_351\bin\;D:\Users\a\AppData\Local\Programs\Python\Python39\Scripts\;D:\Users\a\AppData\Local\Programs\Python\Python39\;C:\Users\a\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\a\AppData\Local\Programs\Python\Python38\;C:\Program Files\Python38\Scripts\;C:\Program Files\Python38\;G:\Program Files\python38\Scripts\;G:\Program Files\python38\;D:\Program Files\Java\jdk1.8.0_351\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;G:\cygwin64\bin;C:\Program Files\Bandizip\;C:\Program Files\dotnet\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\Users\a\AppData\Local\Programs\Python\Python39\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;G:\Program Files\CMake\bin;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\bin\Hostx64\x64;D:\msys64\usr\bin;D:\msys64\mingw64\bin;D:\apache-ant-1.10.13\bin;G:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;D:\proj\jcef\depot_tools;G:\Program Files\Git LFS;C:\Program Files\Cloudflare\Cloudflare WARP\;D:\Program Files\Zulu\bin\;D:\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2021.2.2\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\a\.cargo\bin;D:\Program Files\Zulu\bin\;C:\Users\a\AppData\Local\Microsoft\WindowsApps;G:\cygwin64\bin;C:\Users\a\.dotnet\tools;D:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1\bin;;C:\Users\a\AppData\Local\GitHubDesktop\bin;G:\Program Files\Git\bin;D:\Users\a\AppData\Local\Programs\Python\Python39\Scripts;D:\Users\a\AppData\Local\Programs\Python\Python39\;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\bin\Hostx64\x64;D:\msys64\usr\bin;D:\msys64\mingw64\bin;D:\apache-ant-1.10.13\bin;C:\Users\a\AppData\Roaming\npm;d:\Users\a\AppData\Local\Programs\Microsoft VS Code\bin;D:\proj\jcef\depot_tools;D:\Program Files\cuda\bin;D:\Program Files\cuda\libnvvp;;.
+	at org.eu.hanana.reimu.hnn.neoloader.core.Provider.launch(Provider.java:103)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:77)
+	at org.eu.hanana.reimu.hnn.neoloader.Main.run(Main.java:22)
+	at org.eu.hanana.reimu.hnn.neoloader.Main.main(Main.java:17)
+Caused by: java.lang.UnsatisfiedLinkError: no chrome_elf in java.library.path: D:\Program Files\Java\jdk-18.0.1.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\Program Files\cuda\bin;D:\Program Files\cuda\libnvvp;;;C:\Program Files\Common Files\Oracle\Java\javapath;D:\Program Files (x86)\VMware\VMware Workstation\bin\;D:\Program Files\Java\jdk1.8.0_351\bin\;D:\Users\a\AppData\Local\Programs\Python\Python39\Scripts\;D:\Users\a\AppData\Local\Programs\Python\Python39\;C:\Users\a\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\a\AppData\Local\Programs\Python\Python38\;C:\Program Files\Python38\Scripts\;C:\Program Files\Python38\;G:\Program Files\python38\Scripts\;G:\Program Files\python38\;D:\Program Files\Java\jdk1.8.0_351\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;G:\cygwin64\bin;C:\Program Files\Bandizip\;C:\Program Files\dotnet\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\Users\a\AppData\Local\Programs\Python\Python39\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;G:\Program Files\CMake\bin;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\bin\Hostx64\x64;D:\msys64\usr\bin;D:\msys64\mingw64\bin;D:\apache-ant-1.10.13\bin;G:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;D:\proj\jcef\depot_tools;G:\Program Files\Git LFS;C:\Program Files\Cloudflare\Cloudflare WARP\;D:\Program Files\Zulu\bin\;D:\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2021.2.2\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\a\.cargo\bin;D:\Program Files\Zulu\bin\;C:\Users\a\AppData\Local\Microsoft\WindowsApps;G:\cygwin64\bin;C:\Users\a\.dotnet\tools;D:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1\bin;;C:\Users\a\AppData\Local\GitHubDesktop\bin;G:\Program Files\Git\bin;D:\Users\a\AppData\Local\Programs\Python\Python39\Scripts;D:\Users\a\AppData\Local\Programs\Python\Python39\;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\bin\Hostx64\x64;D:\msys64\usr\bin;D:\msys64\mingw64\bin;D:\apache-ant-1.10.13\bin;C:\Users\a\AppData\Roaming\npm;d:\Users\a\AppData\Local\Programs\Microsoft VS Code\bin;D:\proj\jcef\depot_tools;D:\Program Files\cuda\bin;D:\Program Files\cuda\libnvvp;;.
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2434)
+	at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:848)
+	at java.base/java.lang.System.loadLibrary(System.java:2015)
+	at org.cef.SystemBootstrap$1.loadLibrary(SystemBootstrap.java:24)
+	at org.cef.SystemBootstrap.loadLibrary(SystemBootstrap.java:36)
+	at org.cef.CefApp.<init>(CefApp.java:145)
+	at org.cef.CefApp.getInstance(CefApp.java:221)
+	at org.eu.hanana.reimu.hnnapp.detailed.MainFrame.<init>(MainFrame.java:110)
+	at org.eu.hanana.reimu.hnnapp.detailed.MainFrame.main(MainFrame.java:75)
+	at org.eu.hanana.reimu.hnnapp.Main.run(Main.java:50)
+	at org.eu.hanana.reimu.hnnapp.core.StartUp.enter(StartUp.java:18)
+	at org.eu.hanana.reimu.hnnapp.Main.main(Main.java:35)
+	at org.eu.hanana.reimu.hnnapp.FabricMain.main(FabricMain.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.eu.hanana.reimu.hnn.neoloader.core.Provider.launch(Provider.java:100)
+	... 3 more
+[21:31:15] [INFO] [FabricLoader/GameProvider]: Loading hanana 1.0.0 with Fabric Loader 0.13.3
+[21:31:15] [INFO] [FabricLoader/]: Loading 2 mods:
+	- fabricloader 0.13.3
+	- java 18
+[21:31:15] [INFO] [FabricLoader/Mixin]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=file:/C:/Users/a/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.11.4+mixin.0.8.5/c1dc27696aa4006e492c2485c9ccbcb26045a971/sponge-mixin-0.11.4+mixin.0.8.5.jar Service=Knot/Fabric Env=CLIENT
+[21:31:19] [ERROR] [FabricLoader/]: The game has crashed!
+net.fabricmc.loader.impl.FormattedException: java.lang.UnsatisfiedLinkError: no chrome_elf in java.library.path: ../win64
+	at org.eu.hanana.reimu.hnn.neoloader.core.Provider.launch(Provider.java:103)
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:77)
+	at org.eu.hanana.reimu.hnn.neoloader.Main.run(Main.java:22)
+	at org.eu.hanana.reimu.hnn.neoloader.Main.main(Main.java:17)
+Caused by: java.lang.UnsatisfiedLinkError: no chrome_elf in java.library.path: ../win64
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2434)
+	at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:848)
+	at java.base/java.lang.System.loadLibrary(System.java:2015)
+	at org.cef.SystemBootstrap$1.loadLibrary(SystemBootstrap.java:24)
+	at org.cef.SystemBootstrap.loadLibrary(SystemBootstrap.java:36)
+	at org.cef.CefApp.<init>(CefApp.java:145)
+	at org.cef.CefApp.getInstance(CefApp.java:221)
+	at org.eu.hanana.reimu.hnnapp.detailed.MainFrame.<init>(MainFrame.java:110)
+	at org.eu.hanana.reimu.hnnapp.detailed.MainFrame.main(MainFrame.java:75)
+	at org.eu.hanana.reimu.hnnapp.Main.run(Main.java:50)
+	at org.eu.hanana.reimu.hnnapp.core.StartUp.enter(StartUp.java:18)
+	at org.eu.hanana.reimu.hnnapp.Main.main(Main.java:35)
+	at org.eu.hanana.reimu.hnnapp.FabricMain.main(FabricMain.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.eu.hanana.reimu.hnn.neoloader.core.Provider.launch(Provider.java:100)
+	... 3 more
