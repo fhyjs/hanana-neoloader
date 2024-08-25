@@ -1,5 +1,6 @@
 package org.eu.hanana.reimu.hnn.neoloader;
 
+import com.llamalad7.mixinextras.MixinExtrasBootstrap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.impl.launch.knot.Knot;
 import net.fabricmc.loader.impl.util.Arguments;

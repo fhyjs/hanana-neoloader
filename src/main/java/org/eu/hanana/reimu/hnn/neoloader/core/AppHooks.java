@@ -1,15 +1,6 @@
 package org.eu.hanana.reimu.hnn.neoloader.core;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.DedicatedServerModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.loader.impl.FabricLoaderImpl;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-public final class AppHooks {
+public class AppHooks {
     public static final String INTERNAL_NAME = AppHooks.class.getName().replace('.', '/');
     /** This hook runs Fabric's ModInitializer.onInitialize() from where it is called.
      *  It's recommended that you call them from as late into the game's execution as you can while still being before the game loop,
@@ -25,4 +16,5 @@ public final class AppHooks {
         System.out.println("Patched run!");
         net.fabricmc.loader.impl.game.minecraft.Hooks.startClient(Provider.getInstance().getLaunchDirectory().toFile(),o);
     }
+    public AppHooks(){}
 }

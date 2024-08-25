@@ -3,7 +3,7 @@
     <option name="MAIN_CLASS_NAME" value="org.eu.hanana.reimu.hnn.neoloader.Main" />
     <module name="hanana-neoloader.main" />
     <option name="PROGRAM_PARAMETERS" value="--appjar D:\\proj\\hanana_app\\build\\libs\\hanana_app-1.0-SNAPSHOT-all.jar" />
-    <option name="VM_PARAMETERS" value="-Djava.library.path=../win64" />
+    <option name="VM_PARAMETERS" value="-Djava.library.path=../win64 -Djna.library.path=../win64" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../hanana_app/run" />
     <extension name="coverage">
       <pattern>
