@@ -1,14 +1,15 @@
 package org.eu.hanana.reimu.hnn.neoloader.core;
 
-import com.llamalad7.mixinextras.MixinExtrasBootstrap;
 import net.fabricmc.loader.impl.FormattedException;
 import net.fabricmc.loader.impl.game.GameProvider;
+import net.fabricmc.loader.impl.game.minecraft.patch.EntrypointPatch;
 import net.fabricmc.loader.impl.game.patch.GameTransformer;
 import net.fabricmc.loader.impl.launch.FabricLauncher;
 import net.fabricmc.loader.impl.metadata.BuiltinModMetadata;
 import net.fabricmc.loader.impl.util.Arguments;
 import net.fabricmc.loader.impl.util.log.Log;
 import net.fabricmc.loader.impl.util.log.LogCategory;
+import org.eu.hanana.reimu.hnnapp.Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -92,6 +93,7 @@ public class Provider implements GameProvider {
     public boolean locateGame(FabricLauncher launcher, String[] args) {
         arguments = new Arguments();
         arguments.parse(args);
+
         app_jar= Path.of(arguments.getOrDefault("appjar","./hanana_app-1.0-SNAPSHOT-all.jar"));
         return app_jar.toFile().exists();
     }
@@ -99,7 +101,6 @@ public class Provider implements GameProvider {
     @Override
     public void initialize(FabricLauncher launcher) {
         transformer.locateEntrypoints(launcher, app_jar);
-
     }
 
     @Override
@@ -112,7 +113,7 @@ public class Provider implements GameProvider {
         Log.info(LogCategory.GAME_PROVIDER,"Unlocking app!");
         launcher.addToClassPath(app_jar);
 
-        Log.info(LogCategory.GAME_PROVIDER,"Unlocking mods!");
+        Log.info(LogCategory.GAME_PROVIDER,"Unlocking legacy mods!");
         String cp = System.getProperty("user.dir");
         File path = new File(cp, "mods");
         if (!path.exists()) path.mkdirs();
@@ -143,14 +144,12 @@ public class Provider implements GameProvider {
                 launcher.addToClassPath(Path.of(string));
             }
         }
-
-        //launcher.addToClassPath();
     }
 
     @Override
     public void launch(ClassLoader loader) {
         String targetClass = getEntrypoint();
-        MixinExtrasBootstrap.init();
+
         try {
             Class<?> c = loader.loadClass(targetClass);
             Method m = c.getMethod("main", String[].class, URL[].class);

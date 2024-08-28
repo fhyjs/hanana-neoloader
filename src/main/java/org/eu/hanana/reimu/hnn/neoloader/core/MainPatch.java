@@ -6,8 +6,10 @@ import net.fabricmc.loader.impl.util.log.Log;
 import net.fabricmc.loader.impl.util.log.LogCategory;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.Type;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.MethodNode;
 
 import java.util.ListIterator;
 import java.util.function.Consumer;
@@ -45,25 +47,8 @@ public class MainPatch extends GamePatch {
         /*
           Add our hooks from ExampleHooks.init() to the initializer method.
          */
-        injectTailInsn(initMethod, new MethodInsnNode(Opcodes.INVOKESTATIC, AppHooks.INTERNAL_NAME, "init", "()V", false));
-        //it.add(new MethodInsnNode(Opcodes.INVOKESTATIC, AppHooks.INTERNAL_NAME, "init", "()V", false));
+        it.add(new MethodInsnNode(Opcodes.INVOKESTATIC, AppHooks.INTERNAL_NAME, "init", "()V", false));
         // And finally, apply our changes to the class.
         classEmitter.accept(mainClass);
-    }
-    private static void injectTailInsn(MethodNode method, AbstractInsnNode injectedInsn) {
-        AbstractInsnNode ret = null;
-        int returnOpcode = Type.getReturnType(method.desc).getOpcode(Opcodes.IRETURN);
-
-        for (AbstractInsnNode insn : method.instructions) {
-            if (insn instanceof InsnNode && insn.getOpcode() == returnOpcode) {
-                ret = insn;
-            }
-        }
-
-        if (ret == null) {
-            throw new RuntimeException("TAIL could not locate a valid RETURN in the target method!");
-        }
-
-        method.instructions.insertBefore(ret, injectedInsn);
     }
 }

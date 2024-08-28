@@ -2,17 +2,17 @@ plugins {
     id 'java-library'
 }
 plugins {
-    id "com.github.johnrengelman.shadow" version "8.1.0"
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
 }
 group = 'org.eu.hanana.reimu.hnn.neoloader'
 version = '1.0-SNAPSHOT'
 sourceCompatibility = '18'
 targetCompatibility = '18'
 repositories {
-    mavenCentral()
     maven {
         url 'https://maven.aliyun.com/repository/public/'
     }
+    mavenCentral()
     maven {
         url "https://maven.fabricmc.net/"
     }
@@ -44,10 +44,8 @@ dependencies {
 
     implementation 'org.ow2.sat4j:org.ow2.sat4j.core:2.3.6'
     implementation 'org.ow2.sat4j:org.ow2.sat4j.pb:2.3.6'
-
-    implementation("io.github.llamalad7:mixinextras-common:0.5.0-beta.2")
-    annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.0-beta.2")
 }
+
 test {
     useJUnitPlatform()
 }
