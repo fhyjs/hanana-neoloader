@@ -1,18 +1,21 @@
 package org.eu.hanana.reimu.hnn.neoloader.core;
 
+import com.llamalad7.mixinextras.MixinExtrasBootstrap;
 import net.fabricmc.loader.impl.FormattedException;
 import net.fabricmc.loader.impl.game.GameProvider;
-import net.fabricmc.loader.impl.game.minecraft.patch.EntrypointPatch;
 import net.fabricmc.loader.impl.game.patch.GameTransformer;
 import net.fabricmc.loader.impl.launch.FabricLauncher;
 import net.fabricmc.loader.impl.metadata.BuiltinModMetadata;
 import net.fabricmc.loader.impl.util.Arguments;
+import net.fabricmc.loader.impl.util.UrlUtil;
 import net.fabricmc.loader.impl.util.log.Log;
 import net.fabricmc.loader.impl.util.log.LogCategory;
 import org.eu.hanana.reimu.hnnapp.Utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -91,6 +94,7 @@ public class Provider implements GameProvider {
 
     @Override
     public boolean locateGame(FabricLauncher launcher, String[] args) {
+
         arguments = new Arguments();
         arguments.parse(args);
 
@@ -100,7 +104,7 @@ public class Provider implements GameProvider {
 
     @Override
     public void initialize(FabricLauncher launcher) {
-        transformer.locateEntrypoints(launcher, app_jar);
+        transformer.locateEntrypoints(launcher, Collections.singletonList(app_jar));
     }
 
     @Override
@@ -110,10 +114,35 @@ public class Provider implements GameProvider {
 
     @Override
     public void unlockClassPath(FabricLauncher launcher) {
-        Log.info(LogCategory.GAME_PROVIDER,"Unlocking app!");
+        try {
+            Object result;
+            Class<?> loaderLib;
+            loaderLib = Class.forName("net.fabricmc.loader.impl.game.LoaderLibrary");
+            var method = loaderLib.getMethod("values");
+            method.trySetAccessible();
+            result = method.invoke(null);
+            var libraryListLength = Array.getLength(result);
+            var libraryPathList = new ArrayList<Path>();
+            for (int i = 0; i < libraryListLength; i++) {
+                var o = Array.get(result,i);
+                Field path = loaderLib.getDeclaredField("path");
+                path.trySetAccessible();
+                Object o1 = path.get(o);
+                if (o1!=null) {
+                    libraryPathList.add((Path) o1);
+                    Log.debug(LogCategory.GAME_PROVIDER,o1.toString());
+                }
+            }
+            libraryPathList.add(UrlUtil.getCodeSource(this.getClass()));
+            launcher.setValidParentClassPath(libraryPathList);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        //launcher.setValidParentClassPath(result);
+        Log.info(LogCategory.GAME_PROVIDER, "Unlocking app!");
         launcher.addToClassPath(app_jar);
 
-        Log.info(LogCategory.GAME_PROVIDER,"Unlocking legacy mods!");
+        Log.info(LogCategory.GAME_PROVIDER, "Unlocking legacy mods!");
         String cp = System.getProperty("user.dir");
         File path = new File(cp, "mods");
         if (!path.exists()) path.mkdirs();
@@ -136,14 +165,15 @@ public class Provider implements GameProvider {
         for (Path path1 : list) {
             launcher.addToClassPath(path1);
         }
-        Log.info(LogCategory.GAME_PROVIDER,"Unlocking extra mods!");
-        var exMods = arguments.getOrDefault("extra-mods",null);
-        if (exMods!=null){
+        Log.info(LogCategory.GAME_PROVIDER, "Unlocking extra mods!");
+        var exMods = arguments.getOrDefault("extra-mods", null);
+        if (exMods != null) {
             String[] s = exMods.split(" ");
             for (String string : s) {
                 launcher.addToClassPath(Path.of(string));
             }
         }
+        MixinExtrasBootstrap.init();
     }
 
     @Override
