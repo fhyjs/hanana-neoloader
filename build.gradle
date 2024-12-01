@@ -26,11 +26,11 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
     implementation group: 'org.jetbrains', name: 'intellij-fernflower', version: '1.2.1.16'
-    implementation group: 'net.fabricmc', name: 'fabric-loader', version: '0.14.9'
+    implementation group: 'net.fabricmc', name: 'fabric-loader', version: '0.16.9'
     compileOnly(files("D:\\proj\\hanana_app\\build\\libs\\hanana_app-1.0-SNAPSHOT-all.jar"))
 
 //mixin requirements:
-    implementation("net.fabricmc:sponge-mixin:0.14.0+mixin.0.8.6"){
+    implementation("net.fabricmc:sponge-mixin:0.15.5+mixin.0.8.7"){
         exclude module: 'launchwrapper'
         exclude module: 'guava'
     }
@@ -48,8 +48,8 @@ dependencies {
     implementation group: 'org.ow2.asm', name: 'asm-commons', version: asmVersion
     implementation group: 'org.ow2.asm', name: 'asm-tree', version: asmVersion
     implementation group: 'org.ow2.asm', name: 'asm-util', version: asmVersion
-    implementation("io.github.llamalad7:mixinextras-common:0.5.0-beta.2")
-    annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.0-beta.2")
+    //implementation("io.github.llamalad7:mixinextras-common:0.5.0-beta.2")
+    //annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.0-beta.2")
 }
 
 test {

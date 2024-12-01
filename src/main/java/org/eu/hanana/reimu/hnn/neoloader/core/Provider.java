@@ -1,6 +1,5 @@
 package org.eu.hanana.reimu.hnn.neoloader.core;
 
-import com.llamalad7.mixinextras.MixinExtrasBootstrap;
 import net.fabricmc.loader.impl.FormattedException;
 import net.fabricmc.loader.impl.game.GameProvider;
 import net.fabricmc.loader.impl.game.patch.GameTransformer;
@@ -173,7 +172,7 @@ public class Provider implements GameProvider {
                 launcher.addToClassPath(Path.of(string));
             }
         }
-        MixinExtrasBootstrap.init();
+        //MixinExtrasBootstrap.init();
     }
 
     @Override
@@ -186,10 +185,10 @@ public class Provider implements GameProvider {
             m.invoke(null, getArguments().toArray(), ((URLClassLoader) loader).getURLs());
         }
         catch(InvocationTargetException e) {
-            throw new FormattedException("The game has crashed!", e.getCause());
+            throw new FormattedException("The app has crashed!", e.getCause());
         }
         catch(ReflectiveOperationException e) {
-            throw new FormattedException("Failed to start the game", e);
+            throw new FormattedException("Failed to start the app", e);
         }
     }
 

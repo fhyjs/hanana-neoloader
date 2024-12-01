@@ -14,13 +14,15 @@ import java.util.function.Function;
 
 public class RunPatch extends GamePatch {
     @Override
-    public void process(FabricLauncher launcher, Function<String, ClassReader> classSource, Consumer<ClassNode> classEmitter) {
+    public void process(FabricLauncher launcher, Function<String, ClassNode> classSource, Consumer<ClassNode> classEmitter) {
+    //public void process(FabricLauncher launcher, Function<String, ClassReader> classSource, Consumer<ClassNode> classEmitter) {
 // Get the game's entrypoint (set in the GameProvider) from FabricLauncher
         var entrypoint="org.eu.hanana.reimu.hnnapp.Main";
 
 
         // Store the entrypoint class as a ClassNode variable so that we can more easily work with it.
-        ClassNode mainClass = readClass(classSource.apply(entrypoint));
+        //ClassNode mainClass = readClass(classSource.apply(entrypoint));
+        ClassNode mainClass = classSource.apply(entrypoint);
 
         /* Set the initializer method, this is usually not the main method,
          * it should ideally be placed as close to the game loop as possible without being inside it...*/
