@@ -2,6 +2,7 @@ package org.eu.hanana.reimu.hnn.neoloader.core;
 
 import net.fabricmc.loader.impl.FormattedException;
 import net.fabricmc.loader.impl.game.GameProvider;
+import net.fabricmc.loader.impl.game.LibClassifier;
 import net.fabricmc.loader.impl.game.patch.GameTransformer;
 import net.fabricmc.loader.impl.launch.FabricLauncher;
 import net.fabricmc.loader.impl.metadata.BuiltinModMetadata;
@@ -9,6 +10,7 @@ import net.fabricmc.loader.impl.util.Arguments;
 import net.fabricmc.loader.impl.util.UrlUtil;
 import net.fabricmc.loader.impl.util.log.Log;
 import net.fabricmc.loader.impl.util.log.LogCategory;
+import org.eu.hanana.reimu.hnn.neoloader.app.AppLibrary;
 import org.eu.hanana.reimu.hnnapp.Utils;
 
 import java.io.File;
@@ -114,6 +116,7 @@ public class Provider implements GameProvider {
     @Override
     public void unlockClassPath(FabricLauncher launcher) {
         try {
+            /*
             Object result;
             Class<?> loaderLib;
             loaderLib = Class.forName("net.fabricmc.loader.impl.game.LoaderLibrary");
@@ -134,6 +137,28 @@ public class Provider implements GameProvider {
             }
             libraryPathList.add(UrlUtil.getCodeSource(this.getClass()));
             launcher.setValidParentClassPath(libraryPathList);
+             */
+            LibClassifier<AppLibrary> classifier = new LibClassifier<>(AppLibrary.class, launcher.getEnvironmentType(), this);
+            classifier.process(launcher.getClassPath());
+            var exMods = arguments.getOrDefault("library-path", null);
+            if (exMods != null) {
+                String[] s = exMods.split(";");
+                for (String string : s) {
+                    classifier.process(Path.of(string));
+                }
+            }
+
+            var log4jAvailable = classifier.has(AppLibrary.LOG4J_API) && classifier.has(AppLibrary.LOG4J_CORE);
+            var slf4jAvailable = classifier.has(AppLibrary.SLF4J_API) && classifier.has(AppLibrary.SLF4J_CORE);
+            boolean hasLogLib = log4jAvailable || slf4jAvailable;
+
+            Log.configureBuiltin(hasLogLib, !hasLogLib);
+
+            launcher.setValidParentClassPath(classifier.getSystemLibraries());
+            List<Path> unmatchedOrigins = classifier.getUnmatchedOrigins();
+            for (Path unmatchedOrigin : unmatchedOrigins) {
+                launcher.addToClassPath(unmatchedOrigin);
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

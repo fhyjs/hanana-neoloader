@@ -3,6 +3,7 @@ plugins {
 }
 plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.0'
+    id 'maven-publish'
 }
 group = 'org.eu.hanana.reimu.hnn.neoloader'
 version = '1.0-SNAPSHOT'
@@ -26,7 +27,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
     implementation group: 'org.jetbrains', name: 'intellij-fernflower', version: '1.2.1.16'
-    implementation group: 'net.fabricmc', name: 'fabric-loader', version: '0.16.9'
+    implementation group: 'net.fabricmc', name: 'fabric-loader', version: '0.16.12'
     compileOnly(files("D:\\proj\\hanana_app\\build\\libs\\hanana_app-1.0-SNAPSHOT-all.jar"))
 
 //mixin requirements:
@@ -54,4 +55,45 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+publishing {
+    repositories {
+
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java  // 发布 Java 项目
+
+            groupId = project.group  // 修改为您的组织 ID
+            artifactId = 'neoloader'  // 修改为您的项目名称
+            version = "1.1.1"  // 修改为您的版本号
+
+            // 这里可以添加其他信息，例如 POM 文件中的描述信息
+            pom {
+                name = 'neoloader'
+                description = 'hanana app neoloader'
+                //url = 'https://your.project.url'
+                licenses {
+                    license {
+                        name = 'Apache License 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0'
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url 'https://maven.hanana2.link:2053/releases'
+            credentials {
+                username lcUsername
+                password lcPassword
+            }
+        }
+    }
 }
